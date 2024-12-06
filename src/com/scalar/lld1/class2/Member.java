@@ -3,7 +3,7 @@ package com.scalar.lld1.class2;
 public class Member extends User{
 
     private int borrowedBooksCount;
-    private final int MAX_BORROW_LIMIT = 5;
+    private final static int MAX_BORROW_LIMIT = 5;
 
     public Member(String name, String contactNo)
     {

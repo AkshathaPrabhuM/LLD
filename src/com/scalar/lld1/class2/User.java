@@ -7,11 +7,10 @@ public abstract class User {
     String name;
     String contactNo;
 
-    private static int totalUsers;
+    private static int totalUsers = 0;
 
     public User() {
         this.userId = generateUniqueId();
-        totalUsers = 0;
     }
 
     public User(String name, String contactNo) {

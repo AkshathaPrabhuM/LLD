@@ -3,7 +3,12 @@ package com.scalar.lld1.class2;
 
 public class Librarian extends User {
 
-    String employeeNumber;
+    private String employeeNumber;
+
+    public Librarian(String employeeNumber, String name, String contact) {
+        super(name, contact);
+        this.employeeNumber = employeeNumber;
+    }
 
     @Override
     public void displayDashboard() {
