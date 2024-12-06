@@ -5,7 +5,7 @@ public class TextBook extends Book {
     private int edition;
 
     public TextBook(String isbn, String title, String author, String subject, int edition) {
-        super(isbn, title, author);
+        super(isbn, title, author, "Text Book");
         this.subject = subject;
         this.edition = edition;
     }
