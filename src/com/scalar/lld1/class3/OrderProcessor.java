@@ -21,7 +21,7 @@ public class OrderProcessor {
         }
     }
 
-    void processOrders() {
+    void processAllOrders() {
         while (!orders.isEmpty()) {
             Order order = orders.poll();
             // Do the task
