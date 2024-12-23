@@ -4,22 +4,18 @@ import java.util.LinkedList;
 
 public class RecentlyViewedItem {
     private LinkedList<Item> recentlyViewedItems;
+    private int capacity;
 
-    public RecentlyViewedItem() {
+    public RecentlyViewedItem(int capacity) {
         recentlyViewedItems = new LinkedList<>();
+        this.capacity = capacity;
     }
 
     public void addRecentlyViewedItem(Item item) {
-        if (recentlyViewedItems.contains(item)) {
-            recentlyViewedItems.remove(item);
-            recentlyViewedItems.addFirst(item);
-        } else {
-            if (recentlyViewedItems.size() < 10) {
-                recentlyViewedItems.addFirst(item);
-            } else {
-                recentlyViewedItems.removeLast();
-                recentlyViewedItems.addFirst(item);
-            }
+        recentlyViewedItems.remove(item);
+        recentlyViewedItems.addFirst(item);
+        if (recentlyViewedItems.size() > capacity) {
+            recentlyViewedItems.removeLast();
         }
     }
 }
