@@ -4,7 +4,7 @@ public class Item {
 
     private String id;
     private String name;
-    private int price;
+    private double price;
     private int quantity;
 
 }
