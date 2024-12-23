@@ -13,6 +13,14 @@ public class OrderProcessor {
         orders.add(order);
     }
 
+    void processOrder() {
+        if (!orders.isEmpty()) {
+            Order order = orders.poll();
+            // Do the task
+            System.out.println(order);
+        }
+    }
+
     void processOrders() {
         while (!orders.isEmpty()) {
             Order order = orders.poll();
