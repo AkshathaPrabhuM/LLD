@@ -10,7 +10,7 @@ public class RecentlyViewedItem {
     }
 
     public void addRecentlyViewedItem(Item item) {
-        if (recentlyViewedItems.size() < 3) {
+        if (recentlyViewedItems.size() < 10) {
             recentlyViewedItems.add(item);
         } else {
             recentlyViewedItems.removeFirst();
