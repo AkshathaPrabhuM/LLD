@@ -10,11 +10,16 @@ public class RecentlyViewedItem {
     }
 
     public void addRecentlyViewedItem(Item item) {
-        if (recentlyViewedItems.size() < 10) {
-            recentlyViewedItems.add(item);
+        if (recentlyViewedItems.contains(item)) {
+            recentlyViewedItems.remove(item);
+            recentlyViewedItems.addFirst(item);
         } else {
-            recentlyViewedItems.removeFirst();
-            recentlyViewedItems.add(item);
+            if (recentlyViewedItems.size() < 10) {
+                recentlyViewedItems.addFirst(item);
+            } else {
+                recentlyViewedItems.removeLast();
+                recentlyViewedItems.addFirst(item);
+            }
         }
     }
 }
