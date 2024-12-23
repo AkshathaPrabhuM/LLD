@@ -23,7 +23,7 @@ public class Inventory<T extends Item> {
     }
 
     public List<T> getAllItems() {
-        return new ArrayList<T>(items.values());
+        return new ArrayList<>(items.values());
     }
 
 }
