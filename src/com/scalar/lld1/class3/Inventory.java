@@ -1,8 +1,6 @@
 package com.scalar.lld1.class3;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Inventory<T extends Item> {
 
@@ -24,8 +22,8 @@ public class Inventory<T extends Item> {
         return items.get(id);
     }
 
-    public Collection<T> getAllItems() {
-        return items.values();
+    public List<T> getAllItems() {
+        return new ArrayList<T>(items.values());
     }
 
 }
