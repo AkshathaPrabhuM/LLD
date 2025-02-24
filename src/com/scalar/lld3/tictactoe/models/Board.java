@@ -1,0 +1,38 @@
+package com.scalar.lld3.tictactoe.models;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Board {
+
+    int N;
+
+    List<List<Cell>> cells = new ArrayList<>();
+
+    public Board(int N) {
+        if (N < 3) {
+            throw new IllegalArgumentException("Number of boards must be greater than 3");
+        }
+        this.N = N;
+        for (int i = 0; i < N; i++) {
+            List<Cell> row = new ArrayList<Cell>();
+            for (int j = 0; j < N; j++) {
+                row.add(new Cell(i, j));
+            }
+            cells.add(row);
+        }
+    }
+
+    public void displayBoard() {
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                if (cells.get(i).get(j).cellState.equals(CellState.OCCUPIED)) {
+                    System.out.printf("| %c ", cells.get(i).get(j).player.symbol);
+                } else {
+                    System.out.print("|  ");
+                }
+            }
+            System.out.println("|");
+        }
+    }
+}
