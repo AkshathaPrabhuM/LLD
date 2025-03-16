@@ -1,9 +1,6 @@
 package com.scalar.lld3.tictactoe.controllers;
 
-import com.scalar.lld3.tictactoe.models.Cell;
-import com.scalar.lld3.tictactoe.models.Game;
-import com.scalar.lld3.tictactoe.models.HumanPlayer;
-import com.scalar.lld3.tictactoe.models.Player;
+import com.scalar.lld3.tictactoe.models.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,18 +22,33 @@ public class GameController {
 
         List<Player> players = new ArrayList<>();
         for (int i = 0; i < n - 1; i++) {
-            System.out.println("Enter player name and the symbol: ");
-            String playerName = sc.next();
-            String symbol = sc.next();
-            players.add(new HumanPlayer(playerName, symbol.charAt(0), i + 1));
-
+            players.add(getPlayerInfoFromUser(i));
         }
         return new Game(n, players);
     }
 
+    private static Player getPlayerInfoFromUser(int i) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter player name and the symbol: ");
+        String playerName = sc.next();
+        String symbol = sc.next();
+        System.out.println("Is it a bot player ? (Y/N): ");
+        String botPlayer = sc.next();
+        if (botPlayer.equalsIgnoreCase("Y")) {
+            System.out.println("Enter the difficulty: (1/2/3) : ");
+            int difficulty = sc.nextInt();
+            BotDifficultyLevel botDifficultyLevel = switch (difficulty) {
+                case 1 -> BotDifficultyLevel.EASY;
+                case 2 -> BotDifficultyLevel.MEDIUM;
+                default -> BotDifficultyLevel.HARD;
+            };
+            return new BotPlayer(playerName, symbol.charAt(0), i + 1, botDifficultyLevel);
+        }
+        return new HumanPlayer(playerName, symbol.charAt(0), i + 1);
+    }
+
     public void makeNextMove() {
-        if(game.board.isFull())
-        {
+        if (game.board.isFull()) {
             game.setDraw();
             return;
         }

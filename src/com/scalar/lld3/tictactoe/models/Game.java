@@ -44,7 +44,7 @@ public class Game {
 
     public void makeMoveForCurrPlayer() {
         Player currentPlayer = this.players.get(this.currentPlayerIndex);
-        Cell cell = currentPlayer.makeMove();
+        Cell cell = currentPlayer.makeMove(board, currentPlayer);
 
         // Step 3 update the board and if it fails try again
         try {

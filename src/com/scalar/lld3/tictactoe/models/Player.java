@@ -17,5 +17,5 @@ public abstract class Player {
         this.id = id;
     }
 
-    public abstract Cell makeMove();
+    public abstract Cell makeMove(Board board, Player player);
 }
