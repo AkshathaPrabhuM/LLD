@@ -41,32 +41,4 @@ public class Game {
     public void setDraw() {
         this.gameState = GameState.DRAW;
     }
-
-    public void makeMoveForCurrPlayer() {
-        Player currentPlayer = this.players.get(this.currentPlayerIndex);
-        Cell cell = currentPlayer.makeMove(board, currentPlayer);
-
-        // Step 3 update the board and if it fails try again
-        try {
-            this.board.updateBoard(cell, currentPlayer);
-        } catch (IllegalArgumentException e) {
-            System.out.println("Please choose a valid move");
-            makeMoveForCurrPlayer();
-            return;
-        }
-
-        this.moves.add(cell);
-    }
-
-    public void postMoveWinningCheck() {
-        boolean isWin = this.getWinningStrategies().stream().anyMatch(winningStrategy -> winningStrategy.isWinning(this));
-        if (isWin) {
-            this.setWinner();
-        } else {
-            // Continue the game
-            this.currentPlayerIndex += 1;
-            this.currentPlayerIndex %= this.getPlayers().size();
-        }
-    }
-
 }

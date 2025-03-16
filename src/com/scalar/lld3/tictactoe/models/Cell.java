@@ -1,8 +1,10 @@
 package com.scalar.lld3.tictactoe.models;
 
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 public class Cell {
     int row;
 
